@@ -1,0 +1,13 @@
+package com.capstone.models;
+
+import lombok.Data;
+
+@Data
+public class User {
+
+    private int id;
+    private String name;
+    private int role_id;
+    private String email;
+    private String password;
+}

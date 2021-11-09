@@ -1,0 +1,35 @@
+@url = http://localhost:8080/api/user
+
+GET {{url}} HTTP/1.1
+
+###
+
+GET {{url}}/4 HTTP/1.1
+
+###
+
+POST {{url}}/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Test",
+  "role_id": 1,
+  "email": "Test@gmail.com",
+  "password": "test@1299"
+}
+
+###
+
+PUT {{url}}/4 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "TestUpdate",
+    "role_id": 1,
+    "email": "Test@gmail.com",
+    "password": "test@1299"
+}
+
+###
+DELETE {{url}}/4 HTTP/1.1
