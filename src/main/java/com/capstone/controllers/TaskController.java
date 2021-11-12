@@ -57,7 +57,7 @@ public class TaskController {
         }
         return ErrorResponse.build(result);
     }
-    @RequestMapping(value = "/updatehours/{id}", produces = "application/json")
+    @RequestMapping(value = "/updatehours/{taskid}", produces = "application/json")
     @PutMapping
     public ResponseEntity<Object> updateTotalHours(@PathVariable int taskid, @RequestBody Task task){
         if (taskid != task.getId()) {
