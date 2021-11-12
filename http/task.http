@@ -4,7 +4,7 @@ GET {{url}} HTTP/1.1
 
 ###
 
-GET {{url}}/1 HTTP/1.1
+GET {{url}}/7 HTTP/1.1
 
 ###
 
@@ -12,13 +12,14 @@ POST {{url}}/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Testing3",
-    "user_id": 2,
-    "start_time": "1969-12-31T23:00:01.000+00:00",
-    "end_time": null,
-    "status": "Start",
+    "name": "whatever",
+    "user_id": 1,
+    "start_time": "2021-11-12T09:43:55.000+00:00",
+    "total_hours": null,
+    "status_id": 2,
     "project_id": 1,
-    "notes": null
+    "notes": null,
+    "task_description": null
 }
 
 ###
@@ -27,14 +28,32 @@ PUT {{url}}/3 HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": 2,
-    "name": "Testing87",
+    "id": 4,
+    "name": "whatever",
     "user_id": 1,
-    "start_time": null,
-    "end_time": null,
-    "status": "Start",
+    "start_time": "2021-11-12T09:43:55.000+00:00",
+    "total_hours": null,
+    "status_id": 4,
     "project_id": 1,
-    "notes": null
+    "notes": null,
+    "task_description": null
+}
+
+###
+
+PUT {{url}}/updatehours/4 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 4,
+    "name": "whatever",
+    "user_id": 1,
+    "start_time": "2021-11-12T09:43:55.000+00:00",
+    "total_hours": "2hr",
+    "status_id": 4,
+    "project_id": 1,
+    "notes": null,
+    "task_description": null
 }
 
 ###
