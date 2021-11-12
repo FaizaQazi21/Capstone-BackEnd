@@ -78,6 +78,12 @@ public class ProjectService {
         if (Validations.isNullOrBlank(project.getName())) {
             result.addMessage("name is required", ResultType.INVALID);
         }
+        if (Validations.isNullOrBlank(project.getProject_description())) {
+            result.addMessage("description is required", ResultType.INVALID);
+        }
+        if (Validations.isNullOrBlank(project.getPriority())) {
+            result.addMessage("priority is required", ResultType.INVALID);
+        }
 
         return result;
     }

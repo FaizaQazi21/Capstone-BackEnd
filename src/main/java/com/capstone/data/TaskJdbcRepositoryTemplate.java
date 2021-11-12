@@ -42,7 +42,7 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, task.getName());
-            ps.setInt(2, task.getUser_id());
+            ps.setObject(2, task.getUser_id());
             ps.setTimestamp(3, task.getStart_time());
             ps.setString(4, task.getTotal_hours());
             ps.setInt(5, task.getStatus_id());

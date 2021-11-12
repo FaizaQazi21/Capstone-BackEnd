@@ -12,7 +12,7 @@ public class TaskMapper implements RowMapper<Task>{
         Task task = new Task();
         task.setId(resultSet.getInt("task_id"));
         task.setName(resultSet.getString("name"));
-        task.setUser_id(resultSet.getInt("user_id"));
+        task.setUser_id((Integer) resultSet.getObject("user_id"));
         task.setStart_time(resultSet.getTimestamp("start_time"));
         task.setTotal_hours(resultSet.getString("total_hours"));
         task.setStatus_id(resultSet.getInt("status_id"));

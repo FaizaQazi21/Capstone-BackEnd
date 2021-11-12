@@ -34,13 +34,14 @@ public class ProjectJdbcRepositoryTemplate implements ProjectRepository{
 
     @Override
     public Project add(Project project) {
-        final String sql = "insert into project (name, priority) values(?,?);";
+        final String sql = "insert into project (name, project_description,priority) values(?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, project.getName());
-            ps.setString(2, project.getPriority());
+            ps.setString(1, project.getProject_description());
+            ps.setString(3, project.getPriority());
             return ps;
         }, keyHolder);
 
@@ -54,9 +55,9 @@ public class ProjectJdbcRepositoryTemplate implements ProjectRepository{
 
     @Override
     public boolean update(Project project) {
-        final String sql = "update project set name = ? , priority = ? where project_id = ?;";
+        final String sql = "update project set name = ? , project_description =? ,priority = ? where project_id = ?;";
 
-        return jdbcTemplate.update(sql, project.getName(), project.getPriority(), project.getId()) > 0;
+        return jdbcTemplate.update(sql, project.getName(), project.getProject_description(), project.getPriority(), project.getId()) > 0;
     }
 
     @Override

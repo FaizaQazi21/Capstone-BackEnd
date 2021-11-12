@@ -13,7 +13,8 @@ Content-Type: application/json
 
 {
     "name": "NewProject",
-    "priority": "3"
+    "project_description": null,
+    "priority": "low"
 }
 
 ###
@@ -24,8 +25,9 @@ Content-Type: application/json
 {
     "id": 2,
     "name": "NEW",
+    "project_description": null,
     "priority": "1"
 }
 
 ###
-DELETE {{url}}/2 HTTP/1.1
+DELETE {{url}}/8 HTTP/1.1

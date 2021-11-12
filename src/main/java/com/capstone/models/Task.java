@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class Task {
     private int id;
     private String name;
-    private int user_id;
+    private Integer user_id;
     private Timestamp start_time;
     private String total_hours;
     private int status_id;

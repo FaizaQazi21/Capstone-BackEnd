@@ -12,6 +12,7 @@ CREATE TABLE `role` (
 CREATE TABLE `project` (
   `project_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
+  `project_description` varchar(100) DEFAULT NULL,
   `priority` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`project_id`),
   UNIQUE KEY `project_id_UNIQUE` (`project_id`)
@@ -52,7 +53,7 @@ CREATE TABLE `task` (
   `start_time` timestamp default null,
   `total_hours` varchar(45) DEFAULT NULL,
   `status_id` int default 1,
-  `project_id` int DEFAULT NULL,
+  `project_id` int,
   `note` varchar(45) DEFAULT NULL,
   `task_description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`task_id`),

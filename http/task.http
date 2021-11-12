@@ -12,11 +12,11 @@ POST {{url}}/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "whatever",
-    "user_id": 1,
+    "name": "whatever1",
+    "user_id": null,
     "start_time": "2021-11-12T09:43:55.000+00:00",
     "total_hours": null,
-    "status_id": 2,
+    "status_id": 4,
     "project_id": 1,
     "notes": null,
     "task_description": null
