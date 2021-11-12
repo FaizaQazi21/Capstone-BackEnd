@@ -11,5 +11,6 @@ public interface TaskRepository {
     Task findById (int id);
     Task add (Task task);
     boolean update(Task task);
+    boolean updateTotalHours(Task task);
     boolean deleteById(int id);
 }

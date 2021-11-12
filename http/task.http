@@ -12,9 +12,9 @@ POST {{url}}/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Testing1",
+    "name": "Testing3",
     "user_id": 2,
-    "start_time": null,
+    "start_time": "1969-12-31T23:00:01.000+00:00",
     "end_time": null,
     "status": "Start",
     "project_id": 1,
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{url}}/2 HTTP/1.1
+PUT {{url}}/3 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -38,4 +38,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{url}}/2 HTTP/1.1
+DELETE {{url}}/3 HTTP/1.1

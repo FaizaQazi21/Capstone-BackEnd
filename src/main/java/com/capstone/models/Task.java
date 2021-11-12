@@ -2,18 +2,18 @@ package com.capstone.models;
 
 import lombok.Data;
 
-import java.sql.Time;
-import java.time.LocalTime;
+import java.sql.Timestamp;
 
 @Data
 public class Task {
     private int id;
     private String name;
     private int user_id;
-    private Time start_time;
-    private Time end_time;
-    private String status;
+    private Timestamp start_time;
+    private String total_hours;
+    private int status_id;
     private int project_id;
     private String notes;
+    private String task_description;
 
 }

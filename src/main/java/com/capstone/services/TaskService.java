@@ -68,6 +68,31 @@ public class TaskService {
         return result;
     }
 
+    public Result<Task> updateTotalHours(Task task){
+        Result<Task> result = validate(task);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        if (task.getId() <= 0) {
+            result.addMessage("Id must be set for `update` operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (taskRepository.findById(task.getId()) == null){
+            String msg = String.format("Id: %s, not found", task.getId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+            return result;
+        }
+
+        if (!taskRepository.update(task)) {
+            result.addMessage("Invalid", ResultType.INVALID);
+            return result;
+        }
+
+        return result;
+    }
+
 
     private Result<Task> validate(Task task) {
         Result<Task> result = new Result<>();

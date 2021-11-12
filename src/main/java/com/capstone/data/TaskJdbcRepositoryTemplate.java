@@ -35,19 +35,20 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
     @Override
     public Task add(Task task) {
         final String sql = "insert into task " +
-                "(name, user_id, start_time, end_time, status, project_id, note) " +
-                "values(?,?, ?, ?, ?, ?, ?);";
+                "(name, user_id, start_time, total_hours, status_id, project_id, note, task_description) " +
+                "values(?,?, ?, ?, ?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, task.getName());
             ps.setInt(2, task.getUser_id());
-            ps.setTime(3, task.getStart_time());
-            ps.setTime(4, task.getEnd_time());
-            ps.setString(5, task.getStatus());
+            ps.setTimestamp(3, task.getStart_time());
+            ps.setString(4, task.getTotal_hours());
+            ps.setInt(5, task.getStatus_id());
             ps.setInt(6, task.getProject_id());
             ps.setString(7, task.getNotes());
+            ps.setString(8, task.getTask_description());
             return ps;
         }, keyHolder);
 
@@ -62,11 +63,20 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
     @Override
     public boolean update(Task task) {
         final String sql = "update task set " +
-                "name = ?, user_id = ?, start_time = ?, end_time = ?, status =? , project_id =?, note =? " +
+                "name = ?, user_id = ?, start_time = ?, total_hours = ?, status_id =? , project_id =?, note =?, task_description=? " +
                 "where task_id = ?;";
 
         return jdbcTemplate.update(sql,
-                task.getName(), task.getUser_id(), task.getStart_time(), task.getEnd_time(), task.getStatus(), task.getProject_id(), task.getNotes(), task.getId()) > 0;
+                task.getName(), task.getUser_id(), task.getStart_time(), task.getTotal_hours(), task.getStatus_id(),
+                task.getProject_id(), task.getNotes(), task.getTask_description(), task.getId()) > 0;
+    }
+
+    @Override
+    public boolean updateTotalHours(Task task) {
+
+        final String sql = "update task set total_hours = ? where  status_id = 4 and task_id = ?;";
+
+        return jdbcTemplate.update(sql, task.getTotal_hours(), task.getId()) > 0;
     }
 
     @Override
