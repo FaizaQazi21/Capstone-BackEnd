@@ -15,7 +15,7 @@ public class TaskMapper implements RowMapper<Task>{
         task.setUser_id((Integer) resultSet.getObject("user_id"));
         task.setStart_time(resultSet.getTimestamp("start_time"));
         task.setTotal_hours(resultSet.getString("total_hours"));
-        task.setStatus_id(resultSet.getString("status_id"));
+        task.setStatus_id(resultSet.getInt("status_id"));
         task.setProject_id(resultSet.getInt("project_id"));
         task.setNotes(resultSet.getString("note"));
         task.setNotes(resultSet.getString("task_description"));

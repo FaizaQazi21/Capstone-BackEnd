@@ -71,7 +71,7 @@ public class TaskController {
         if (taskid != task.getId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        Result<Task> result = service.update(task);
+        Result<Task> result = service.updateTotalHours(task);
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

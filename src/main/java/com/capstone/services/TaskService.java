@@ -90,7 +90,7 @@ public class TaskService {
             return result;
         }
 
-        if (!taskRepository.update(task)) {
+        if (!taskRepository.updateTotalHours(task)) {
             result.addMessage("Invalid", ResultType.INVALID);
             return result;
         }

@@ -51,7 +51,7 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
             ps.setObject(2, task.getUser_id());
             ps.setTimestamp(3, task.getStart_time());
             ps.setString(4, task.getTotal_hours());
-            ps.setString(5, task.getStatus_id());
+            ps.setInt(5, task.getStatus_id());
             ps.setInt(6, task.getProject_id());
             ps.setString(7, task.getNotes());
             ps.setString(8, task.getTask_description());
@@ -80,9 +80,31 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
     @Override
     public boolean updateTotalHours(Task task) {
 
-        final String sql = "update task set total_hours = ? where  status_id = 4 and task_id = ?;";
+        final int start = 1;
+        final int paused = 2;
+        final int inProgress =3;
+        final int completed =4;
+        String sql;
 
-        return jdbcTemplate.update(sql, task.getTotal_hours(), task.getId()) > 0;
+        if (task.getStatus_id() == start){ //change status from start to in progress
+            sql = "update task set start_time = ?, user_id = ?, status_id = ?," +
+                    " note = ?, task_description = ? where task_id = ?;";
+
+            return jdbcTemplate.update(sql, task.getStart_time(), task.getUser_id(), inProgress,
+                    task.getNotes(),task.getTask_description(), task.getId()) > 0;
+        }else if(task.getStatus_id() == paused){
+
+            sql = "update task set total_hours = ?, status_id = ?, note = ?," +
+                    "task_description = ? where task_id = ?;";
+            return jdbcTemplate.update(sql, task.getTotal_hours(), paused,task.getNotes(),
+                    task.getTask_description(), task.getId()) > 0;
+        }else { //the last possible status is 4
+            //update total_hours, status_id to completed, note, task_description
+            sql = "update task set total_hours = ?, status_id = ?, note = ?," +
+                    "task_description = ? where task_id = ?;";
+            return jdbcTemplate.update(sql, task.getTotal_hours(), completed, task.getNotes(),
+                    task.getTask_description(), task.getId()) > 0;
+        }
     }
 
     @Override
