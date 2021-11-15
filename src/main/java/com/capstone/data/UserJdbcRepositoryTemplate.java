@@ -39,7 +39,7 @@ public class UserJdbcRepositoryTemplate implements UserRepository{
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getName());
-            ps.setInt(2, user.getRole_id());
+            ps.setString(2, user.getRole_id());
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getPassword());
             return ps;

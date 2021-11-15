@@ -9,6 +9,7 @@ import java.util.List;
 public interface TaskRepository {
     List<Task> findAll();
     Task findById (int id);
+    Task findByUser(int id);
     Task add (Task task);
     boolean update(Task task);
     boolean updateTotalHours(Task task);

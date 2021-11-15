@@ -29,6 +29,14 @@ public class TaskController {
         }
         return ResponseEntity.ok(task);
     }
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Task> findByUser(@PathVariable int id){
+        Task task= service.findByUser(id);
+        if (task == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(task);
+    }
 
     @GetMapping
     public List<Task> findAll() {

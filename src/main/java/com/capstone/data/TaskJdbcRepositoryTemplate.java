@@ -33,6 +33,12 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
     }
 
     @Override
+    public Task findByUser(int userId) {
+        final String sql = "select * from task where user_id = ?;";
+        return jdbcTemplate.query(sql, new TaskMapper(), userId).stream().findAny().orElse(null);
+    }
+
+    @Override
     public Task add(Task task) {
         final String sql = "insert into task " +
                 "(name, user_id, start_time, total_hours, status_id, project_id, note, task_description) " +
@@ -45,7 +51,7 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
             ps.setObject(2, task.getUser_id());
             ps.setTimestamp(3, task.getStart_time());
             ps.setString(4, task.getTotal_hours());
-            ps.setInt(5, task.getStatus_id());
+            ps.setString(5, task.getStatus_id());
             ps.setInt(6, task.getProject_id());
             ps.setString(7, task.getNotes());
             ps.setString(8, task.getTask_description());

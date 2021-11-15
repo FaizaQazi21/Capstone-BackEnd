@@ -7,7 +7,7 @@ public class User {
 
     private int id;
     private String name;
-    private int role_id;
+    private String role_id;
     private String email;
     private String password;
 }
