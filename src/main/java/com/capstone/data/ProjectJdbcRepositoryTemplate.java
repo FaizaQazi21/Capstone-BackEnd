@@ -40,7 +40,7 @@ public class ProjectJdbcRepositoryTemplate implements ProjectRepository{
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, project.getName());
-            ps.setString(1, project.getProject_description());
+            ps.setString(2, project.getProject_description());
             ps.setString(3, project.getPriority());
             return ps;
         }, keyHolder);
