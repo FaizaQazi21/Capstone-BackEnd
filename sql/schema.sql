@@ -27,13 +27,12 @@ CREATE TABLE `status` (
 CREATE TABLE `user` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `role_id` int DEFAULT NULL,
+  `role_id` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
-  KEY `role_id_idx` (`role_id`),
-  CONSTRAINT `role_id` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
+  KEY `role_id_idx` (`role_id`)
 );
 
 CREATE TABLE `log` (
@@ -52,7 +51,7 @@ CREATE TABLE `task` (
   `user_id` int DEFAULT NULL,
   `start_time` timestamp default null,
   `total_hours` varchar(45) DEFAULT NULL,
-  `status_id` int default 1,
+  `status_id` varchar(45) default 'Start',
   `project_id` int,
   `note` varchar(45) DEFAULT NULL,
   `task_description` varchar(100) DEFAULT NULL,
@@ -61,8 +60,7 @@ CREATE TABLE `task` (
   KEY `user_id_idx` (`user_id`),
   KEY `project_id_idx` (`project_id`),
   CONSTRAINT `project_id` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`),
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
-  CONSTRAINT `status_id` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`)
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 );
 
 
