@@ -1,6 +1,7 @@
 package com.capstone.services;
 
 import com.capstone.data.TaskRepository;
+import com.capstone.models.ProjectTask;
 import com.capstone.models.Task;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public Task findByUser(int id){
+    public List<ProjectTask> findByUser(int id){
         return taskRepository.findByUser(id);
     }
 

@@ -1,6 +1,7 @@
 package com.capstone.controllers;
 
 
+import com.capstone.models.ProjectTask;
 import com.capstone.models.Task;
 import com.capstone.services.Result;
 import com.capstone.services.TaskService;
@@ -30,12 +31,9 @@ public class TaskController {
         return ResponseEntity.ok(task);
     }
     @GetMapping("/user/{id}")
-    public ResponseEntity<Task> findByUser(@PathVariable int id){
-        Task task= service.findByUser(id);
-        if (task == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok(task);
+    public List<ProjectTask> findByUser(@PathVariable int id){
+        return service.findByUser(id);
+
     }
 
     @GetMapping

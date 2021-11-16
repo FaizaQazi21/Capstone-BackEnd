@@ -1,7 +1,9 @@
 package com.capstone.data;
 
 
+import com.capstone.data.mapper.ProjectTaskMapper;
 import com.capstone.data.mapper.TaskMapper;
+import com.capstone.models.ProjectTask;
 import com.capstone.models.Task;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -33,9 +35,12 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
     }
 
     @Override
-    public Task findByUser(int userId) {
-        final String sql = "select * from task where user_id = ?;";
-        return jdbcTemplate.query(sql, new TaskMapper(), userId).stream().findAny().orElse(null);
+    public List<ProjectTask> findByUser(int userId) {
+        final String sql = "select task_id, task.name as task_name, project.name as project_name, " +
+                "total_hours, status.status,project.project_id,status.status_id,task.user_id from task " +
+                "left join status on task.status_id = status.status_id " +
+                "left join project on project.project_id = task.project_id and user_id =?;";
+        return jdbcTemplate.query(sql, new ProjectTaskMapper(),userId);
     }
 
     @Override
