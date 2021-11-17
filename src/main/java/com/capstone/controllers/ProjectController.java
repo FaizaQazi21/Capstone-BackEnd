@@ -44,8 +44,8 @@ public class ProjectController {
         return ErrorResponse.build(result);
     }
 
-    //@RequestMapping(value = "/{id}", produces = "application/json")
-    @PutMapping("/{id}")
+    //@RequestMapping(value = "/update/{id}", produces = "application/json")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody Project project){
         if (id != project.getId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);

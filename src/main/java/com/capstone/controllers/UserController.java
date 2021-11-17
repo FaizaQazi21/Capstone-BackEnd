@@ -44,8 +44,8 @@ public class UserController {
         return ErrorResponse.build(result);
     }
 
-    @RequestMapping(value = "/{id}", produces = "application/json")
-    @PutMapping
+   // @RequestMapping(value = "/{id}", produces = "application/json")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody User user){
         if (id != user.getId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);

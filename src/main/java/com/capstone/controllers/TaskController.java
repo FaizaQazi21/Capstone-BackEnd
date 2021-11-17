@@ -35,6 +35,11 @@ public class TaskController {
         return service.findByUser(id);
 
     }
+    @GetMapping("/project/{id}")
+    public List<ProjectTask> findByProject(@PathVariable int id){
+        return service.findByProject(id);
+
+    }
 
     @GetMapping
     public List<Task> findAll() {

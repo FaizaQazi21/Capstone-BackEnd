@@ -19,13 +19,13 @@ Content-Type: application/json
 
 ###
 
-PUT {{url}}/2 HTTP/1.1
+PUT {{url}}/update/2 HTTP/1.1
 Content-Type: application/json
 
 {
     "id": 2,
-    "name": "NEWUpdate",
-    "project_description": "blablabla",
+    "name": "NEW",
+    "project_description": "test",
     "priority": "1"
 }
 
