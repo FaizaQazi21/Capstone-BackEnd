@@ -10,4 +10,5 @@ public class User {
     private String role_id;
     private String email;
     private String password;
+    private double salary;
 }

@@ -30,6 +30,7 @@ CREATE TABLE `user` (
   `role_id` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
+  `salary` DOUBLE NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   KEY `role_id_idx` (`role_id`)
@@ -64,10 +65,9 @@ CREATE TABLE `task` (
   CONSTRAINT `status_id` FOREIGN KEY (`status_id`) REFERENCES `status` (`status_id`)
 );
 
-
-INSERT INTO `log` VALUES (1,2,'added new project');
-INSERT INTO `project` VALUES (1,'Capstone',NULL);
 INSERT INTO `role` VALUES (1,'Admin','1'),(2,'User','2'),(3,'Observer ','3');
-INSERT INTO `task` VALUES (1,'Testing',1,current_timestamp(),'2021-11-11 11:59:08',null,1,1,NULL);
-INSERT INTO `user` VALUES (1,'Kelvin',1,'kelvin234@gmail.com','test123'),(2,'Martin',2,'martin655@gmail.com','test@123'),(3,'Harry',3,'harryjack@gmail.com','Test@54676');
+INSERT INTO `project` VALUES (1,'Capstone',NULL, NULL);
 INSERT INTO `status` VALUES (1, 'START'), (2 ,'PAUSED'), (3, 'INPROGRESS'), (4, 'COMPLETED');
+INSERT INTO `user` VALUES (1,'Kelvin',1,'kelvin234@gmail.com','test123'),(2,'Martin',2,'martin655@gmail.com','test@123'),(3,'Harry',3,'harryjack@gmail.com','Test@54676');
+INSERT INTO `log` VALUES (1,2,'added new project');
+INSERT INTO `task` VALUES (1,'Testing',1,current_timestamp(),'2021-11-11 11:59:08',null,1,1,NULL);

@@ -4,11 +4,11 @@ GET {{url}} HTTP/1.1
 
 ###
 
-GET {{url}}/10 HTTP/1.1
+GET {{url}}/1 HTTP/1.1
 
 ###
 
-GET {{url}}/user/2 HTTP/1.1
+GET {{url}}/user/1 HTTP/1.1
 
 ###
 
@@ -45,15 +45,15 @@ Content-Type: application/json
 
 ###
 
-PUT {{url}}/updatehours/2 HTTP/1.1
+PUT {{url}}/updatehours/1 HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": 2,
+    "id":1,
     "name": "whatever",
     "user_id": 1,
     "start_time": "2021-11-12T09:43:55.000+00:00",
-    "total_hours": "8hr",
+    "total_hours": "8",
     "status_id": 2,
     "project_id": 1,
     "notes": null,

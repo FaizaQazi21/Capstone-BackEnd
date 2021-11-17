@@ -24,8 +24,8 @@ Content-Type: application/json
 
 {
     "id": 2,
-    "name": "NEW",
-    "project_description": null,
+    "name": "NEWUpdate",
+    "project_description": "blablabla",
     "priority": "1"
 }
 

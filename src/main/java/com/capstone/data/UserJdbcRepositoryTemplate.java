@@ -33,7 +33,7 @@ public class UserJdbcRepositoryTemplate implements UserRepository{
 
     @Override
     public User add(User user) {
-        final String sql = "insert into user (name, role_id, email, password) values(?,?, ?, ?);";
+        final String sql = "insert into user (name, role_id, email, password, salary) values(?,?, ?, ?, ?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -42,6 +42,7 @@ public class UserJdbcRepositoryTemplate implements UserRepository{
             ps.setString(2, user.getRole_id());
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getPassword());
+            ps.setDouble(5, user.getSalary());
             return ps;
         }, keyHolder);
 
@@ -55,9 +56,10 @@ public class UserJdbcRepositoryTemplate implements UserRepository{
 
     @Override
     public boolean update(User user) {
-        final String sql = "update user set name = ? , role_id = ?, email = ?, password = ? where user_id = ?;";
+        final String sql = "update user set name = ? , role_id = ?, email = ?, password = ? , salary =? where user_id = ?;";
 
-        return jdbcTemplate.update(sql, user.getName(), user.getRole_id(), user.getEmail(), user.getPassword(), user.getId()) > 0;
+        return jdbcTemplate.update(sql, user.getName(), user.getRole_id(), user.getEmail(), user.getPassword(),
+                user.getSalary(), user.getId()) > 0;
     }
 
     @Override
