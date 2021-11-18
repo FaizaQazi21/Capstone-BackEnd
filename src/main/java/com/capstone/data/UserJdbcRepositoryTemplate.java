@@ -21,13 +21,13 @@ public class UserJdbcRepositoryTemplate implements UserRepository{
 
     @Override
     public List<User> findAll() {
-        final String sql = "select * from user;";
+        final String sql = "select a.user_id,a.name,a.role_id,b.role,a.email,a.password,a.salary from user a,role b where a.role_id = b.role_id;";
         return jdbcTemplate.query(sql, new UserMapper());
     }
 
     @Override
     public User findById(int id) {
-        final String sql = "select * from user where user_id = ?;";
+        final String sql = "select a.user_id,a.name,a.role_id,b.role,a.email,a.password,a.salary from user a,role b where a.role_id = b.role_id and a.user_id = ?;";
         return jdbcTemplate.query(sql, new UserMapper(), id).stream().findAny().orElse(null);
     }
 
