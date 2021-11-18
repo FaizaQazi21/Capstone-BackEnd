@@ -87,4 +87,7 @@ public class ProjectService {
 
         return result;
     }
+    public int getTotalTasksCompleted(int id){
+        return projectRepository.findCompletedTasks(id);
+    }
 }

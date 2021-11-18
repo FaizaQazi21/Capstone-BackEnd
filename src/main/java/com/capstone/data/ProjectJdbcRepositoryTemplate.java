@@ -65,4 +65,10 @@ public class ProjectJdbcRepositoryTemplate implements ProjectRepository{
         return jdbcTemplate.update(
                 "delete from project where project_id = ?", id) > 0;
     }
+    @Override
+    public int findCompletedTasks(int id) {
+        final String sql = "select count(*) from task where project_id = ? and status_id =4;";
+        int totalTasksCompleted = jdbcTemplate.queryForObject(sql, Integer.class, id);
+        return totalTasksCompleted;
+    }
 }

@@ -64,4 +64,9 @@ public class ProjectController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/completedtasks/{id}")
+    public int completedTasksByProjectId(@PathVariable int id) {
+        return service.getTotalTasksCompleted(id);
+    }
 }

@@ -13,4 +13,5 @@ public interface ProjectRepository {
     Project add (Project project);
     boolean update(Project project);
     boolean deleteById(int id);
+    int findCompletedTasks(int id);
 }
