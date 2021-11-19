@@ -10,7 +10,6 @@ public interface TaskRepository {
     List<Task> findAll();
     Task findById (int id);
     List<ProjectTask> findByUser(int id);
-    List<ProjectTask> findByProject(int id);
     Task add (Task task);
     boolean update(Task task);
     boolean updateTotalHours(Task task);

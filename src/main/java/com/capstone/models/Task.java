@@ -10,7 +10,7 @@ public class Task {
     private String name;
     private Integer user_id;
     private Timestamp start_time;
-    private String total_hours;
+    private double total_hours;
     private int status_id;
     private int project_id;
     private String notes;

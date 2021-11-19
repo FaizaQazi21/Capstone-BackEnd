@@ -8,6 +8,10 @@ GET {{url}}/1 HTTP/1.1
 
 ###
 
+GET {{url}}/project/1 HTTP/1.1
+
+###
+
 GET {{url}}/user/1 HTTP/1.1
 
 ###

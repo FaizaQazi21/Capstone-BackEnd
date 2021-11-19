@@ -30,14 +30,11 @@ public class TaskController {
         }
         return ResponseEntity.ok(task);
     }
+
+
     @GetMapping("/user/{id}")
     public List<ProjectTask> findByUser(@PathVariable int id){
         return service.findByUser(id);
-
-    }
-    @GetMapping("/project/{id}")
-    public List<ProjectTask> findByProject(@PathVariable int id){
-        return service.findByProject(id);
 
     }
 

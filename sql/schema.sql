@@ -51,7 +51,7 @@ CREATE TABLE `task` (
   `name` varchar(45) NOT NULL,
   `user_id` int DEFAULT NULL,
   `start_time` timestamp default null,
-  `total_hours` varchar(45) DEFAULT NULL,
+  `total_hours` DOUBLE DEFAULT NULL,
   `status_id` int default 1,
   `project_id` int,
   `note` varchar(45) DEFAULT NULL,
