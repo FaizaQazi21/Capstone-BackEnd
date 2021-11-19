@@ -43,7 +43,14 @@ public class TaskJdbcRepositoryTemplate implements  TaskRepository{
         return jdbcTemplate.query(sql, new ProjectTaskMapper(),userId);
     }
 
-
+    @Override
+    public List<ProjectTask> findByProject(int projectId) {
+        final String sql = "select task_id, task.name as task_name, project.name as project_name, " +
+                "total_hours, status.status,project.project_id,status.status_id,task.user_id from task " +
+                "left join status on task.status_id = status.status_id " +
+                "left join project on project.project_id = task.project_id where task.project_id =?;";
+        return jdbcTemplate.query(sql, new ProjectTaskMapper(),projectId);
+    }
 
 
 

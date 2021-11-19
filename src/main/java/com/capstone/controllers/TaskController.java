@@ -32,6 +32,12 @@ public class TaskController {
     }
 
 
+    @GetMapping("/project/{id}")
+    public List<ProjectTask> findByProject(@PathVariable int id){
+        return service.findByProject(id);
+
+    }
+
     @GetMapping("/user/{id}")
     public List<ProjectTask> findByUser(@PathVariable int id){
         return service.findByUser(id);
@@ -53,8 +59,8 @@ public class TaskController {
         return ErrorResponse.build(result);
     }
 
-    @RequestMapping(value = "/{id}", produces = "application/json")
-    @PutMapping
+    //@RequestMapping(value = "/{id}", produces = "application/json")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody Task task){
         if (id != task.getId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
